@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Tabs from '../Components/Shop/Tabs'
-import {CarritoCompras} from '../Components/Shop/Carrito'
+import { CarritoCompras } from '../Components/Shop/Carrito'
 import Drawer from '../Components/Shop/Drawer'
 
 const Appheader = styled.header`
@@ -14,14 +14,16 @@ const Appheader = styled.header`
   color: white;
 `
 
-export const Shop = () => {
-    return(
-        <>
-        <Appheader>
-         <Tabs />                 
-        </Appheader>
-        <CarritoCompras />     
-        <Drawer />
-        </>
-    )
+const Shop = () => {
+  return (
+    <div>
+      <Appheader>
+        <Tabs />
+      </Appheader>
+      <CarritoCompras />
+      <Drawer />
+    </div>
+  )
 }
+
+export default Shop

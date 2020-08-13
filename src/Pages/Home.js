@@ -1,14 +1,15 @@
 import React from 'react'
-import { ProductosProvider } from '../Components/Context'
-import GlobalStyle from '../Styles/Globalstyles'
-import {Shop} from './Shop'
-function Home() {
-  
-    return ( 
 
-      <ProductosProvider>
-        <GlobalStyle />
-        <Shop />
-      </ProductosProvider>
-  )}
+import Shop from './Shop'
+import Footer from '../Components/Footer'
+import Navbar from '../Components/navbar'
+function Home () {
+  return (
+    <>
+      <Navbar />
+      <Shop />
+      <Footer />
+    </>
+  )
+}
 export default Home

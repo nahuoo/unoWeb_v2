@@ -1,22 +1,22 @@
-import React, { useContext } from 'react';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import {Productos} from './Productos'
-import {Catalogo} from './Catalogo'
-import PropTypes from 'prop-types';
-import SwipeableViews from 'react-swipeable-views';
-import AppBar from '@material-ui/core/AppBar';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-import  {ContextProductos} from '../Context'
+import React, { useContext } from 'react'
+import { makeStyles, useTheme } from '@material-ui/core/styles'
+import Tabs from '@material-ui/core/Tabs'
+import Tab from '@material-ui/core/Tab'
+import { Productos } from './Productos'
+import { Catalogo } from './Catalogo'
+import PropTypes from 'prop-types'
+import SwipeableViews from 'react-swipeable-views'
+import AppBar from '@material-ui/core/AppBar'
+import Typography from '@material-ui/core/Typography'
+import Box from '@material-ui/core/Box'
+import { ContextProductos } from '../../Context/Context'
 
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
+function TabPanel (props) {
+  const { children, value, index, ...other } = props
 
   return (
     <div
-      role="tabpanel"
+      role='tabpanel'
       hidden={value !== index}
       id={`full-width-tabpanel-${index}`}
       aria-labelledby={`full-width-tab-${index}`}
@@ -28,58 +28,59 @@ function TabPanel(props) {
         </Box>
       )}
     </div>
-  );
+  )
 }
 
 TabPanel.propTypes = {
   children: PropTypes.node,
   index: PropTypes.any.isRequired,
-  value: PropTypes.any.isRequired,
-};
+  value: PropTypes.any.isRequired
+}
 
-function a11yProps(index) {
+function a11yProps (index) {
   return {
     id: `full-width-tab-${index}`,
-    'aria-controls': `full-width-tabpanel-${index}`,
-  };
+    'aria-controls': `full-width-tabpanel-${index}`
+  }
 }
 
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: 'rgba(250,250,250)',
-    width: '100%',
-  },
-}));
+    width: '100%'
+  }
+}))
 
-export default function FullWidthTabs() {
-  const classes = useStyles();
-  const theme = useTheme();
+export default function FullWidthTabs () {
+  const classes = useStyles()
+  const theme = useTheme()
   const { indiceTabs, setIndiceTabs } = useContext(ContextProductos)
 
   const handleChange = () => {
-    if (indiceTabs === 1) {setIndiceTabs(0)}
-    else { setIndiceTabs(1)}
-    
-  };
+    if (indiceTabs === 1) {
+      setIndiceTabs(0)
+    } else {
+      setIndiceTabs(1)
+    }
+  }
 
   const handleChangeIndex = (index) => {
-    setIndiceTabs(index);
-  };
+    setIndiceTabs(index)
+  }
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="default">
+      <AppBar position='static' color='default'>
         <Tabs
           value={indiceTabs}
           onChange={handleChange}
-          indicatorColor="secondary"
-          textColor="secondary"
-          variant="fullWidth"
-          aria-label="tabs"
+          indicatorColor='secondary'
+          textColor='secondary'
+          variant='fullWidth'
+          aria-label='tabs'
         >
-          <Tab label="Equipos" {...a11yProps(0)} />
-          <Tab label="Productos" {...a11yProps(1)} />
-         
+          <Tab label='Equipos' {...a11yProps(0)} />
+          <Tab label='Productos' {...a11yProps(1)} />
         </Tabs>
       </AppBar>
       <SwipeableViews
@@ -88,16 +89,12 @@ export default function FullWidthTabs() {
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={indiceTabs} index={0} dir={theme.direction}>
-           <Catalogo />
+          <Catalogo />
         </TabPanel>
         <TabPanel value={indiceTabs} index={1} dir={theme.direction}>
           <Productos />
         </TabPanel>
       </SwipeableViews>
     </div>
-  );
+  )
 }
-
-
-
-
